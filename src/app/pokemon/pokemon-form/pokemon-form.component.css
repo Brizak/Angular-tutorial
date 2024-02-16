@@ -1,0 +1,9 @@
+/* Evite les checkbox  */
+.ng-valid[required] {
+    border-left: 5px solid #42a948;
+}
+
+/* Par champs et pas sur tout le formulaire */
+.ng-invalid:not(form) { 
+    border-left: 5px solid #a94442;
+}

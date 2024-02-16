@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
   
 @Component({
     selector: 'page-404',
@@ -10,6 +11,8 @@ import { Component } from '@angular/core';
         Retourner à l' accueil
       </a>
     </div>
-  `
+  `,
+    standalone: true,
+    imports: [RouterLink]
 })
 export class PageNotFoundComponent { }

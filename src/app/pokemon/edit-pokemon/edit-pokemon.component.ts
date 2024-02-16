@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../pokemon';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
+import { LoaderComponent } from '../loader/loader.component';
+import { PokemonFormComponent } from '../pokemon-form/pokemon-form.component';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-edit-pokemon',
-  template: `
+    selector: 'app-edit-pokemon',
+    template: `
     <div *ngIf="pokemon">
       <div class="center">
         <h2>Editer {{ pokemon.name }}</h2>
@@ -17,7 +20,9 @@ import { PokemonService } from '../pokemon.service';
       <app-loader></app-loader>
     </h3>
   `,
-  styles: [],
+    styles: [],
+    standalone: true,
+    imports: [NgIf, PokemonFormComponent, LoaderComponent]
 })
 export class EditPokemonComponent implements OnInit {
   pokemon: Pokemon | undefined;

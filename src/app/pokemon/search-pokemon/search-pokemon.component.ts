@@ -10,10 +10,13 @@ import {
   switchMap,
 } from 'rxjs';
 import { PokemonService } from '../pokemon.service';
+import { NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-search-pokemon',
-  templateUrl: './search-pokemon.component.html',
+    selector: 'app-search-pokemon',
+    templateUrl: './search-pokemon.component.html',
+    standalone: true,
+    imports: [NgFor, AsyncPipe]
 })
 export class SearchPokemonComponent implements OnInit {
   // {..."a".."ab"..."abz".."ab"..."abc".....} stocker les recherches successives, flux dans le temps des recherches

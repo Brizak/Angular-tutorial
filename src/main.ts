@@ -21,10 +21,12 @@ const routes: Routes = [
     },
     {
         path: 'login',
+        title: 'Login',
         loadComponent: () => import("./app/login/login.component").then((module) => module.LoginComponent),
     },
     {
         path: '**',
+        title: 'Page not found',
         loadComponent: () => import("./app/page-not-found/page-not-found.component").then((module) => module.PageNotFoundComponent),
     },
 ];

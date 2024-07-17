@@ -1,4 +1,4 @@
-import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { enableProdMode, importProvidersFrom, inject } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 
@@ -11,12 +11,14 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
+import { AuthService } from './app/auth.service';
 
 const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     {
         path: '',
         canActivate: [AuthGuard],
+        // canActivate: [() => inject(AuthService).isLoggedIn()]
         loadChildren: () => import("./app/pokemon/pokemon.routes"),
     },
     {

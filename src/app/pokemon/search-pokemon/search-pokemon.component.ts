@@ -28,15 +28,9 @@ export class SearchPokemonComponent implements OnInit {
 
   ngOnInit(): void {
     this.pokemons$ = this.searchTerms.pipe(
-      // {..."a"."ab"..."abz"."ab"...."abc"......}
       debounceTime(300), //opérateur qui élimine les search qui ont moins de 300ms d'attente apr ès
-      // {....."ab"...."ab"...."abc"......}
       distinctUntilChanged(), //opérateur qui attend qu'il y ai un changement dans les search
-      // {....."ab".........."abc"......}
-      // map((term) => this.pokemonService.searchPokemonList(term))
-      // {.....Observable<"ab">..........Observable<"abc">......}
       switchMap((term) => this.pokemonService.searchPokemonList(term))
-      // {.....pokemonList("ab")......  ....pokemonList("abc")......}
     );
   }
 
